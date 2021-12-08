@@ -1,0 +1,17 @@
+input {
+    border-radius: 8px;
+    background: #ededed;
+    border: none;
+    width: calc(100% - 62px);
+    height: 44px;
+    text-align: center;
+    font-weight: bold;
+    transition: .5s ease-in-out;
+}
+input:hover {
+    box-shadow: 0px 0px 10px #FFFFFC;
+}
+input:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px #FFFFFC;
+}

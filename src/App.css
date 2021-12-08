@@ -1,0 +1,12 @@
+.MainContainer {
+  border-radius: 50px;
+  background: #212121;
+  box-shadow:  20px 20px 60px #1c1c1c,
+               -20px -20px 60px #262626;
+  margin-top: 128px;
+  height: fit-content;
+  padding: 36px;
+  text-align: center;
+  position: relative;
+}
+
