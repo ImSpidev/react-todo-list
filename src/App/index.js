@@ -1,27 +1,21 @@
 import React from 'react';
 import { AppUI } from './AppUI';
+import { useLocalStorage } from '../customHooks/useLocalStorage';
 import './App.css';
 
-const defaultTodos = [
-  {text: 'Tomar curso de intro a React', completed: true},
-  {text: 'Crear portafolio', completed: false},
-  {text: 'Tomar awa', completed: false}
-];
+// const defaultTodos = [
+//   {text: 'Tomar curso de intro a React', completed: true},
+//   {text: 'Crear portafolio', completed: false},
+//   {text: 'Tomar awa', completed: false}
+// ];
+
 
 
 function App() {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
 
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
 
-  const [todos, setTodos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -42,11 +36,7 @@ function App() {
   }
 
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
-  }
+
 
 
   const completeTodo = (text) => {
