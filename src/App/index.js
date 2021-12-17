@@ -13,7 +13,12 @@ import './App.css';
 
 function App() {
 
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
 
 
   const [searchValue, setSearchValue] = React.useState('');
@@ -35,10 +40,6 @@ function App() {
 
   }
 
-
-
-
-
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
     const newTodos = [...todos];
@@ -55,8 +56,16 @@ function App() {
     saveTodos(newTodos);
   }
 
+  // React.useEffect(() => {
+  //   console.log('useEffect');
+  // }, [totalTodos]);
+
+
   return (
     <AppUI 
+      loading={loading}
+      error={error}
+
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       
