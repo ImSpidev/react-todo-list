@@ -11,9 +11,11 @@
     color: #fff;
     height: 64px;
     width: 64px;
+    z-index: 2;
 
     transform: rotate(0);
     transition: .3s ease;
+
 }
 
 .CreateTodoButton:hover {
